@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia de Protótipos de Robótica Educacional</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Guia de Protótipos de Robótica Educacional</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
         :root {
             --primary: #2563eb;
             --primary-hover: #1d4ed8;
@@ -185,51 +186,98 @@
             font-size: 0.9rem;
             max-height: 500px;
         }
-    </style>
+    
+        .prototype-intro {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+        .prototype-intro h2 { font-size: 1.15rem; margin-bottom: .45rem; color: #1e40af; }
+        .prototype-intro p { color: #334155; }
+        .image-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .image-card h2 { font-size: 1.15rem; margin-bottom: .4rem; }
+        .image-card p { color: var(--text-muted); margin-bottom: 1rem; }
+        .prototype-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            align-items: start;
+        }
+        .prototype-image {
+            width: 100%;
+            max-width: 100%;
+            height: 260px;
+            object-fit: contain;
+            display: block;
+            margin: 0;
+            border-radius: 8px;
+            background: #f8fafc;
+        }
+        @media (max-width: 600px) {
+            .prototype-gallery { grid-template-columns: 1fr; }
+            .prototype-image { height: auto; max-height: 360px; }
+        }
+        .pin-note { color: #64748b; font-size: .85rem; margin-top: .75rem; }
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8rem; }
+            .card, .image-card { padding: 1rem; }
+        }
+</style>
 </head>
 <body>
-
 <div class="container">
-    <header>
-        <h1>Compartilhamento de Protótipos</h1>
-        <p>Material de apoio e códigos prontos para replicação em sala de aula.</p>
-    </header>
-
-    <div class="tabs">
-        <button class="tab-btn active" onclick="switchTab(event, 'p1')">1. Cronômetro de Precisão</button>
-        <button class="tab-btn" onclick="switchTab(event, 'p2')">2. Contador de Palmas</button>
-        <button class="tab-btn" onclick="switchTab(event, 'p3')">3. Jogo das Cores</button>
-    </div>
-
-    <!-- PROTÓTIPO 1 -->
-    <div id="p1" class="tab-content active">
-        <div class="grid">
-            <div class="card">
-                <h2>Lista de Componentes</h2>
-                <ul>
-                    <li>Placa Arduino Uno <span>1 un.</span></li>
-                    <li>Display TM1637 (4 Dígitos) <span>1 un.</span></li>
-                    <li>Buzzer Passivo <span>1 un.</span></li>
-                    <li>Botão (Push Button) <span>1 un.</span></li>
-                    <li>Protoboard e Jumpers <span>Vários</span></li>
-                </ul>
-            </div>
-            <div class="card">
-                <h2>Esquema de Pinagem</h2>
-                <ul>
-                    <li>Display TM1637 - CLK <span class="pin-badge">Pino 2</span></li>
-                    <li>Display TM1637 - DIO <span class="pin-badge">Pino 3</span></li>
-                    <li>Push Button <span class="pin-badge">Pino 4</span></li>
-                    <li>Buzzer Passivo <span class="pin-badge">Pino 5</span></li>
-                </ul>
-            </div>
-        </div>
-        <div class="code-container">
-            <div class="code-header">
-                <span>Código C++ (Arduino)</span>
-                <button class="copy-btn" onclick="copyCode('code1')">Copiar Código</button>
-            </div>
-            <pre><code id="code1">#include &lt;TM1637Display.h&gt;
+<header>
+<h1>Compartilhamento de Protótipos</h1>
+<p>Material de apoio e códigos prontos para replicação em sala de aula.</p>
+</header>
+<div class="tabs">
+<button class="tab-btn active" onclick="switchTab(event, 'p1')">Cronômetro de Precisão</button>
+<button class="tab-btn" onclick="switchTab(event, 'p3')">Jogo de LEDs</button>
+<button class="tab-btn" onclick="switchTab(event, 'p2')">Contador de Batidas</button>
+<button class="tab-btn" onclick="switchTab(event, 'p4')">Jogo da Memória</button></div><div class="tab-content active" id="p1"><div class="prototype-intro"><h2>Com o que este protótipo está relacionado?</h2><p>Trend de parar o cronômetro no tempo solicitado: uma pessoa escolhe um tempo-alvo e o jogador tenta parar o cronômetro o mais próximo possível desse valor.</p></div><div class="image-card">
+<h2>Imagens do protótipo</h2>
+<div class="prototype-gallery">
+  <img class="prototype-image" src="cronometro1.png" alt="Cronômetro de Precisão - imagem 1">
+  <img class="prototype-image" src="cronometro2.png" alt="Cronômetro de Precisão - imagem 2">
+  <img class="prototype-image" src="cronometro3.png" alt="Cronômetro de Precisão - imagem 3">
+</div>
+</div>
+<div class="grid">
+<div class="card">
+<h2>Lista de Componentes</h2>
+<ul>
+<li>Placa Arduino Uno <span>1 un.</span></li>
+<li>Display TM1637 (4 Dígitos) <span>1 un.</span></li>
+<li>Buzzer Passivo <span>1 un.</span></li>
+<li>Botão (Push Button) <span>1 un.</span></li>
+<li>Protoboard<span>1 un.</span></li>
+<li>Jumpers <span>Vários</span></li>
+</ul>
+</div>
+<div class="card">
+<h2>Esquema de Pinagem</h2>
+<ul>
+<li>Display TM1637 - CLK <span class="pin-badge">Pino 2</span></li>
+<li>Display TM1637 - DIO <span class="pin-badge">Pino 3</span></li>
+<li>Push Button <span class="pin-badge">Pino 4</span></li>
+<li>Buzzer Passivo <span class="pin-badge">Pino 5</span></li>
+</ul>
+</div>
+</div>
+<div class="code-container">
+<div class="code-header">
+<span>Código C++ (Arduino)</span>
+<button class="copy-btn" onclick="copyCode('code1')">Copiar Código</button>
+</div>
+<pre><code id="code1">#include &lt;TM1637Display.h&gt;
 
 const int CLK = 2;
 const int DIO = 3;
@@ -260,13 +308,13 @@ void loop() {
   int estadoBotao = digitalRead(PIN_BOTAO);
   unsigned long tempoAtual = millis();
 
-  if (estadoBotao == LOW && !botaoPressionadoAnteriormente) {
+  if (estadoBotao == LOW &amp;&amp; !botaoPressionadoAnteriormente) {
     tempoPressionado = tempoAtual;
     botaoPressionadoAnteriormente = true;
   }
 
-  if (estadoBotao == LOW && botaoPressionadoAnteriormente) {
-    if (tempoAtual - tempoPressionado >= tempoCliqueLongo) {
+  if (estadoBotao == LOW &amp;&amp; botaoPressionadoAnteriormente) {
+    if (tempoAtual - tempoPressionado &gt;= tempoCliqueLongo) {
       tone(PIN_BUZZER, 300, 150);
       delay(150);
       tone(PIN_BUZZER, 150, 250);
@@ -285,10 +333,10 @@ void loop() {
     }
   }
 
-  if (estadoBotao == HIGH && botaoPressionadoAnteriormente) {
+  if (estadoBotao == HIGH &amp;&amp; botaoPressionadoAnteriormente) {
     unsigned long duracaoClique = tempoAtual - tempoPressionado;
 
-    if (duracaoClique >= debounceDelay && duracaoClique < tempoCliqueLongo) {
+    if (duracaoClique &gt;= debounceDelay &amp;&amp; duracaoClique &lt; tempoCliqueLongo) {
       cronometroAtivo = !cronometroAtivo;
      
       if (cronometroAtivo) {
@@ -318,153 +366,41 @@ void exibirTempo(unsigned long ms) {
 
   display.showNumberDecEx(valorDisplay, 0b01000000, true);
 }</code></pre>
-        </div>
-    </div>
-
-    <!-- PROTÓTIPO 2 -->
-    <div id="p2" class="tab-content">
-        <div class="grid">
-            <div class="card">
-                <h2>Lista de Componentes</h2>
-                <ul>
-                    <li>Placa Arduino Uno <span>1 un.</span></li>
-                    <li>Sensor de Som Digital (KY-037/KY-038) <span>1 un.</span></li>
-                    <li>Servo Motor <span>1 un.</span></li>
-                    <li>LEDs Difusos <span>7 un.</span></li>
-                    <li>Resistores de 220Ω <span>7 un.</span></li>
-                </ul>
-            </div>
-            <div class="card">
-                <h2>Esquema de Pinagem</h2>
-                <ul>
-                    <li>Sensor de Som Digital <span class="pin-badge">Pino 2</span></li>
-                    <li>LEDs 1 a 7 <span class="pin-badge">Pinos 3 a 9</span></li>
-                    <li>Sinal do Servo Motor <span class="pin-badge">Pino 10</span></li>
-                </ul>
-            </div>
-        </div>
-        <div class="code-container">
-            <div class="code-header">
-                <span>Código C++ (Arduino)</span>
-                <button class="copy-btn" onclick="copyCode('code2')">Copiar Código</button>
-            </div>
-            <pre><code id="code2">#include &lt;Servo.h&gt;
-
-const int pinoSom = 2;          
-const int pinosLeds[7] = {3, 4, 5, 6, 7, 8, 9}; 
-const int pinoServo = 10;       
-
-Servo meuServo;
-
-volatile int contadorBatidas = 0;
-volatile unsigned long tempoUltimaBatida = 0;
-volatile unsigned long tempoPrimeiraBatida = 0;
-volatile bool novaBatidaDetectada = false; 
-
-const unsigned long janelaTempo = 1500; 
-const unsigned long debounceTime = 180; 
-
-void setup() {
-  Serial.begin(9600);
- 
-  for (int i = 0; i < 7; i++) {
-    pinMode(pinosLeds[i], OUTPUT);
-    digitalWrite(pinosLeds[i], LOW); 
-  }
- 
-  pinMode(pinoSom, INPUT);
-  attachInterrupt(digitalPinToInterrupt(pinoSom), somDetectado, FALLING);
- 
-  meuServo.attach(pinoServo);
-  meuServo.write(0); 
- 
-  Serial.println("=========================================");
-  Serial.println("Sistema Pronto! Aguardando batidas...");
-  Serial.println("=========================================");
-}
-
-void loop() {
-  if (novaBatidaDetectada) {
-    novaBatidaDetectada = false;
-    Serial.print("Batida detectada! Contagem atual: ");
-    Serial.println(contadorBatidas);
-  }
-
-  if (contadorBatidas > 0 && (millis() - tempoPrimeiraBatida > janelaTempo)) {
-    detachInterrupt(digitalPinToInterrupt(pinoSom));
-   
-    int batidasFinais = contadorBatidas;
-    if (batidasFinais > 7) batidasFinais = 7; 
-   
-    Serial.println("\n--- FIM DA JANELA DE TEMPO ---");
-    Serial.print("Total final de batidas: ");
-    Serial.println(contadorBatidas);
-
-    for (int i = 0; i < 7; i++) {
-      digitalWrite(pinosLeds[i], LOW);
-    }
-
-    int angulo = batidasFinais * 20;
-    meuServo.write(angulo);
-   
-    int indiceLed = batidasFinais - 1;
-    for (int p = 0; p < 3; p++) {
-      digitalWrite(pinosLeds[indiceLed], HIGH);
-      delay(200);
-      digitalWrite(pinosLeds[indiceLed], LOW);
-      delay(200);
-    }
-   
-    digitalWrite(pinosLeds[indiceLed], HIGH);
-    contadorBatidas = 0;
-    attachInterrupt(digitalPinToInterrupt(pinoSom), somDetectado, FALLING);
-  }
-}
-
-void somDetectado() {
-  unsigned long tempoAtual = millis();
- 
-  if (tempoAtual - tempoUltimaBatida > debounceTime) {
-    if (contadorBatidas == 0) {
-      tempoPrimeiraBatida = tempoAtual; 
-    }
-    contadorBatidas++;
-    tempoUltimaBatida = tempoAtual;
-    novaBatidaDetectada = true; 
-  }
-}</code></pre>
-        </div>
-    </div>
-
-    <!-- PROTÓTIPO 3 -->
-    <div id="p3" class="tab-content">
-        <div class="grid">
-            <div class="card">
-                <h2>Lista de Componentes</h2>
-                <ul>
-                    <li>Placa Arduino Uno <span>1 un.</span></li>
-                    <li>Fita de LED Endereçável WS2812B <span>80 LEDs</span></li>
-                    <li>Botões (Push Buttons) <span>2 un.</span></li>
-                    <li>Buzzer Passivo <span>1 un.</span></li>
-                    <li>Fonte de Alimentação Externa <span>Opcional</span></li>
-                </ul>
-            </div>
-            <div class="card">
-                <h2>Esquema de Pinagem</h2>
-                <ul>
-                    <li>Botão 1 (Cor 1) <span class="pin-badge">Pino 2</span></li>
-                    <li>Botão 2 (Cor 2) <span class="pin-badge">Pino 3</span></li>
-                    <li>Buzzer Passivo <span class="pin-badge">Pino 4</span></li>
-                    <li>Dados da Fita WS2812B <span class="pin-badge">Pino 5</span></li>
-                </ul>
-            </div>
-        </div>
-        <div class="code-container">
-            <div class="code-header">
-                <span>Código C++ (Arduino)</span>
-                <button class="copy-btn" onclick="copyCode('code3')">Copiar Código</button>
-            </div>
-            <pre><code id="code3">#include &lt;FastLED.h&gt;
+</div>
+</div><div class="tab-content" id="p3"><div class="prototype-intro"><h2>Com o que este protótipo está relacionado?</h2><p>Inspirado no tradicional jogo de destruir bolinhas coloridas: o jogador utiliza os botões para controlar as ações e tenta eliminar as luzes coloridas antes que avancem até o lançador.</p></div><div class="image-card">
+<h2>Imagens do protótipo</h2>
+<div class="prototype-gallery">
+  <img class="prototype-image" src="jogo_leds1.png" alt="Jogo de LEDs - imagem 1">
+  <img class="prototype-image" src="jogo_leds2.png" alt="Jogo de LEDs - imagem 2">
+  <img class="prototype-image" src="jogo_leds3.png" alt="Jogo de LEDs - imagem 3">
+</div>
+</div>
+<div class="grid">
+<div class="card">
+<h2>Lista de Componentes</h2>
+<ul>
+<li>Placa Arduino Uno <span>1 un.</span></li>
+<li>Fita de LED Endereçável WS2812B <span>1 r.</span></li>
+<li>Botões (Push Buttons) <span>2 un.</span></li>
+<li>Buzzer Passivo <span>1 un.</span></li>
+</ul>
+</div>
+<div class="card">
+<h2>Esquema de Pinagem</h2>
+<ul>
+<li>Botão 1<span class="pin-badge">Pino 2</span></li>
+<li>Botão 2<span class="pin-badge">Pino 3</span></li>
+<li>Buzzer Passivo <span class="pin-badge">Pino 4</span></li>
+<li>Dados da Fita WS2812B <span class="pin-badge">Pino 5</span></li>
+</ul>
+</div>
+</div>
+<div class="code-container">
+<div class="code-header">
+<span>Código C++ (Arduino)</span>
+<button class="copy-btn" onclick="copyCode('code3')">Copiar Código</button>
+</div>
+<pre><code id="code3">#include &lt;FastLED.h&gt;
 #define LED_PIN     5
 #define NUM_LEDS    80 
 #define LED_TYPE    WS2812B
@@ -497,10 +433,272 @@ void setup() {
 void loop() {
   // Lógica simplificada do loop para o Jogo das Cores
 }</code></pre>
-        </div>
-    </div>
 </div>
+</div><div class="tab-content" id="p2"><div class="prototype-intro"><h2>Com o que este protótipo está relacionado?</h2><p>Desafio de contar as batidas: o sensor detecta palmas ou batidas em um intervalo de tempo, e o protótipo apresenta o resultado por meio dos LEDs e do movimento do servo motor.</p></div><div class="image-card">
+<h2>Imagens do protótipo</h2>
+<div class="prototype-gallery">
+  <img class="prototype-image" src="contador_batidas1.png" alt="Contador de Batidas - imagem 1">
+  <img class="prototype-image" src="contador_batidas2.png" alt="Contador de Batidas - imagem 2">
+  <img class="prototype-image" src="contador_batidas3.png" alt="Contador de Batidas - imagem 3">
+</div>
+</div>
+<div class="grid">
+<div class="card">
+<h2>Lista de Componentes</h2>
+<ul>
+<li>Placa Arduino Uno <span>1 un.</span></li>
+<li>Sensor de Som Digital (KY-037/KY-038) <span>1 un.</span></li>
+<li>Servo Motor <span>1 un.</span></li>
+<li>LEDs Difusos <span>7 un.</span></li>
+<li>Resistores de 220Ω <span>7 un.</span></li>
+</ul>
+</div>
+<div class="card">
+<h2>Esquema de Pinagem</h2>
+<ul>
+<li>Sensor de Som Digital <span class="pin-badge">Pino 2</span></li>
+<li>LEDs 1 a 7 <span class="pin-badge">Pinos 3 a 9</span></li>
+<li>Sinal do Servo Motor <span class="pin-badge">Pino 10</span></li>
+</ul>
+</div>
+</div>
+<div class="code-container">
+<div class="code-header">
+<span>Código C++ (Arduino)</span>
+<button class="copy-btn" onclick="copyCode('code2')">Copiar Código</button>
+</div>
+<pre><code id="code2">#include &lt;Servo.h&gt;
 
+const int pinoSom = 2;          
+const int pinosLeds[7] = {3, 4, 5, 6, 7, 8, 9}; 
+const int pinoServo = 10;       
+
+Servo meuServo;
+
+volatile int contadorBatidas = 0;
+volatile unsigned long tempoUltimaBatida = 0;
+volatile unsigned long tempoPrimeiraBatida = 0;
+volatile bool novaBatidaDetectada = false; 
+
+const unsigned long janelaTempo = 1500; 
+const unsigned long debounceTime = 180; 
+
+void setup() {
+  Serial.begin(9600);
+ 
+  for (int i = 0; i &lt; 7; i++) {
+    pinMode(pinosLeds[i], OUTPUT);
+    digitalWrite(pinosLeds[i], LOW); 
+  }
+ 
+  pinMode(pinoSom, INPUT);
+  attachInterrupt(digitalPinToInterrupt(pinoSom), somDetectado, FALLING);
+ 
+  meuServo.attach(pinoServo);
+  meuServo.write(0); 
+ 
+  Serial.println("=========================================");
+  Serial.println("Sistema Pronto! Aguardando batidas...");
+  Serial.println("=========================================");
+}
+
+void loop() {
+  if (novaBatidaDetectada) {
+    novaBatidaDetectada = false;
+    Serial.print("Batida detectada! Contagem atual: ");
+    Serial.println(contadorBatidas);
+  }
+
+  if (contadorBatidas &gt; 0 &amp;&amp; (millis() - tempoPrimeiraBatida &gt; janelaTempo)) {
+    detachInterrupt(digitalPinToInterrupt(pinoSom));
+   
+    int batidasFinais = contadorBatidas;
+    if (batidasFinais &gt; 7) batidasFinais = 7; 
+   
+    Serial.println("\n--- FIM DA JANELA DE TEMPO ---");
+    Serial.print("Total final de batidas: ");
+    Serial.println(contadorBatidas);
+
+    for (int i = 0; i &lt; 7; i++) {
+      digitalWrite(pinosLeds[i], LOW);
+    }
+
+    int angulo = batidasFinais * 20;
+    meuServo.write(angulo);
+   
+    int indiceLed = batidasFinais - 1;
+    for (int p = 0; p &lt; 3; p++) {
+      digitalWrite(pinosLeds[indiceLed], HIGH);
+      delay(200);
+      digitalWrite(pinosLeds[indiceLed], LOW);
+      delay(200);
+    }
+   
+    digitalWrite(pinosLeds[indiceLed], HIGH);
+    contadorBatidas = 0;
+    attachInterrupt(digitalPinToInterrupt(pinoSom), somDetectado, FALLING);
+  }
+}
+
+void somDetectado() {
+  unsigned long tempoAtual = millis();
+ 
+  if (tempoAtual - tempoUltimaBatida &gt; debounceTime) {
+    if (contadorBatidas == 0) {
+      tempoPrimeiraBatida = tempoAtual; 
+    }
+    contadorBatidas++;
+    tempoUltimaBatida = tempoAtual;
+    novaBatidaDetectada = true; 
+  }
+}</code></pre>
+</div>
+</div><div class="tab-content" id="p4">
+<div class="prototype-intro">
+<h2>Com o que este protótipo está relacionado?</h2>
+<p>Jogo da memória: o jogador observa uma sequência de luzes e sons e precisa repeti-la pressionando os botões correspondentes, exercitando a atenção e a memória.</p>
+</div>
+<div class="image-card">
+<h2>Imagens do protótipo</h2>
+<div class="prototype-gallery">
+  <img class="prototype-image" src="jogo_memoria1.png" alt="Jogo da Memória - imagem 1">
+  <img class="prototype-image" src="jogo_memoria2.png" alt="Jogo da Memória - imagem 2">
+  <img class="prototype-image" src="jogo_memoria3.png" alt="Jogo da Memória - imagem 3">
+</div>
+</div>
+<div class="grid">
+<div class="card">
+<h2>Lista de Componentes</h2>
+<ul>
+<li>Arduino Uno <span>1 un.</span></li>
+<li>Botões (push buttons) <span>4 un.</span></li>
+<li>LEDs <span>4 un.</span></li>
+<li>Buzzer <span>1 un.</span></li>
+<li>Protoboard<span>1 un.</span></li>
+<li>Jumpers <span>Vários</span></li>
+<li>Resistores para os LEDs <span>4 un.</span></li>
+</ul>
+</div>
+<div class="card">
+<h2>Esquema de Pinagem</h2>
+<ul>
+<li>Botão 1, 2, 3 e 4 <span class="pin-badge">Pino 1, 2, 3 e 4</span></li>
+<li>LEDs 1, 2, 3 e 4 <span class="pin-badge">Pinos 8, 9, 10 e 11</span></li>
+<li>Buzzer <span class="pin-badge">Pino 7</span></li>
+</ul>
+</div>
+</div>
+<div class="code-container">
+<div class="code-header">
+<span>Código C++ (Arduino)</span>
+<button class="copy-btn" onclick="copyCode('code4')">Copiar Código</button>
+</div>
+<pre><code id="code4">const int pinosBotoes[4] = {1, 2, 3, 4};
+const int pinosLeds[4] = {8, 9, 10, 11};
+const int pinoBuzzer = 7;
+
+const int TAM_MAX = 50;
+int sequencia[TAM_MAX];
+int nivel = 1;
+
+void tocarNota(int frequencia, int duracao) {
+  tone(pinoBuzzer, frequencia, duracao);
+  delay(duracao);
+  noTone(pinoBuzzer);
+}
+
+void piscarLed(int indice, int duracao) {
+  digitalWrite(pinosLeds[indice], HIGH);
+  tocarNota(440 + indice * 110, duracao);
+  digitalWrite(pinosLeds[indice], LOW);
+  delay(150);
+}
+
+void mostrarSequencia() {
+  delay(500);
+  for (int i = 0; i &lt; nivel; i++) {
+    piscarLed(sequencia[i], 350);
+  }
+}
+
+int lerBotao() {
+  for (int i = 0; i &lt; 4; i++) {
+    if (digitalRead(pinosBotoes[i]) == LOW) {
+      delay(25); // debounce simples
+      if (digitalRead(pinosBotoes[i]) == LOW) {
+        while (digitalRead(pinosBotoes[i]) == LOW) {
+          delay(10);
+        }
+        return i;
+      }
+    }
+  }
+  return -1;
+}
+
+void indicarErro() {
+  for (int repeticao = 0; repeticao &lt; 3; repeticao++) {
+    for (int i = 0; i &lt; 4; i++) {
+      digitalWrite(pinosLeds[i], HIGH);
+    }
+    tocarNota(180, 250);
+    for (int i = 0; i &lt; 4; i++) {
+      digitalWrite(pinosLeds[i], LOW);
+    }
+    delay(180);
+  }
+}
+
+void setup() {
+  for (int i = 0; i &lt; 4; i++) {
+    pinMode(pinosBotoes[i], INPUT_PULLUP);
+    pinMode(pinosLeds[i], OUTPUT);
+    digitalWrite(pinosLeds[i], LOW);
+  }
+  pinMode(pinoBuzzer, OUTPUT);
+
+  randomSeed(analogRead(A0));
+  for (int i = 0; i &lt; TAM_MAX; i++) {
+    sequencia[i] = random(0, 4);
+  }
+
+  mostrarSequencia();
+}
+
+void loop() {
+  for (int i = 0; i &lt; nivel; i++) {
+    int botao = -1;
+    while (botao == -1) {
+      botao = lerBotao();
+    }
+
+    piscarLed(botao, 180);
+
+    if (botao != sequencia[i]) {
+      indicarErro();
+      nivel = 1;
+      mostrarSequencia();
+      return;
+    }
+  }
+
+  tocarNota(1200, 120); // acerto
+  delay(400);
+
+  if (nivel &lt; TAM_MAX) {
+    nivel++;
+    mostrarSequencia();
+  } else {
+    nivel = 1;
+    mostrarSequencia();
+  }
+}</code></pre>
+</div>
+</div>
+<!-- PROTÓTIPO 1 -->
+<!-- PROTÓTIPO 2 -->
+<!-- PROTÓTIPO 3 -->
+</div>
 <script>
     function switchTab(evt, tabId) {
         const contents = document.querySelectorAll('.tab-content');
@@ -527,7 +725,7 @@ void loop() {
             }, 2000);
         });
     }
-</script>
 
+</script>
 </body>
 </html>
